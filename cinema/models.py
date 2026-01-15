@@ -24,6 +24,7 @@ class CinemaHall(models.Model):
     def __str__(self):
         return f"CinemaHall: {self.name} (rows: {self.rows}, seats_in_row: {self.seats_in_row})"
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()

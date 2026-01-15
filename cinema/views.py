@@ -8,7 +8,12 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
 from cinema.models import Movie, Genre, Actor, CinemaHall
-from cinema.serializers import MovieSerializer, GenreSerializer, ActorSerializer, CinemaHallSerializer
+from cinema.serializers import (
+    MovieSerializer,
+    GenreSerializer,
+    ActorSerializer,
+    CinemaHallSerializer,
+)
 
 
 class GenreAPIView(APIView):
@@ -47,6 +52,7 @@ class GenreAPIView(APIView):
         genre.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class ActorAPIView(GenericAPIView):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
@@ -83,6 +89,7 @@ class ActorAPIView(GenericAPIView):
         actor = get_object_or_404(self.get_queryset(), pk=pk)
         actor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class CinemaHallViewSet(GenericViewSet):
     queryset = CinemaHall.objects.all()
