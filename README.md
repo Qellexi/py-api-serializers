@@ -1,25 +1,38 @@
-# Movie API
+# API Views
 
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
-In this task, you should implement an API that provides CRUD operations for the Movie model.
+Now, you are going to implement views via class-based views.
 
-1. Create a Django project and a `cinema` app inside it.
-2. `cinema` should have a `Movie` model that has the following fields:
-    * `title` - a film title
-    * `description` - a film description
-    * `duration` - a film duration in minutes
-3. Implement a serializer for this model.
-4. Create api views for the following endpoints:
-    * `GET api/cinema/movies/` - should return a list of the all movies
-    * `GET api/cinema/movies/<pk>/` - should return a movie with given id 
-    * `POST api/cinema/movies/` - should create a new movie based on passed data
-    * `PUT api/cinema/movies/<pk>/` - should update the movie with given id based on passed data
-    * `DELETE api/cinema/movies/<pk>/` - should delete the movie with given id
+Create `Genre`, `Actor`, `CinemaHall` models and update `Movie` model to
+the ones you wrote in Django ORM module. Modules should have such fields:
+- `Actor`: `first_name`, `last_name`
+- `Genre`: `name` (note: must be unique)
+- `CinemaHall`: `name`, `rows`, `seats_in_row`
+- `Movie`: `title`, `description`, `actors`, `genres`, `duration`. (note: you 
+already have a new field here) 
+
+Create serializers for all these models. Do not use related serializers for
+ManyToMany relations.
 
 Use the following command to load prepared data from fixture to test and debug your code:
+  `python manage.py loaddata cinema_serviсe_db_data.json`.
 
-  `python manage.py loaddata cinema_service_db_data.json`
+Create views for models interaction endpoints via different class-based views:
+- For the `Genre` model use an `APIView`
+- For the `Actor` model use a `GenericAPIView`
+- For the `CinemaHall` model use a `GenericViewSet`
+- For the `Movie` model use a `ModelViewSet` and `routers`
 
+Feel free to add more data using admin panel, if needed.
+
+For every `<entity>` from `actors`, `genres`, `cinema_halls`, `movies`, such
+endpoints should work:
+* `GET api/cinema/<entity>/` - should return a list of the all entity items
+* `POST api/cinema/<entity>/` - should create a new entity based on passed data
+* `GET api/cinema/<entity>/<pk>/` - should return an entity with given id
+* `PUT api/cinema/<entity>/<pk>/` - should update the entity with given id based on passed data
+* `PATCH api/cinema/<entity>/<pk>/` - should partially update the entity with given id based on passed data
+* `DELETE api/cinema/<entity>/<pk>/` - should delete the entity with given id
 
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
