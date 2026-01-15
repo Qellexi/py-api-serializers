@@ -15,16 +15,10 @@ from cinema.serializers import (
     CinemaHallSerializer,
 )
 
-
-class GenreAPIView(APIView):
-
-    def get(self, request, pk=None):
-        if pk:
-            genre = get_object_or_404(Genre, pk=pk)
-            serializer = GenreSerializer(genre)
-        else:
-            genres = Genre.objects.all()
-            serializer = GenreSerializer(genres, many=True)
+class GenreListCreateAPIView(APIView):
+    def get(self, request):
+        genres = Genre.objects.all()
+        serializer = GenreSerializer(genres, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -32,6 +26,13 @@ class GenreAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class GenreDetailAPIView(APIView):
+    def get(self, request, pk):
+        genre = get_object_or_404(Genre, pk=pk)
+        serializer = GenreSerializer(genre)
+        return Response(serializer.data)
 
     def put(self, request, pk):
         genre = get_object_or_404(Genre, pk=pk)
@@ -53,16 +54,12 @@ class GenreAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class ActorAPIView(GenericAPIView):
+class ActorListCreateAPIView(GenericAPIView):
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
 
-    def get(self, request, pk=None):
-        if pk:
-            actor = get_object_or_404(self.get_queryset(), pk=pk)
-            serializer = self.get_serializer(actor)
-        else:
-            serializer = self.get_serializer(self.get_queryset(), many=True)
+    def get(self, request):
+        serializer = self.get_serializer(self.get_queryset(), many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -70,6 +67,16 @@ class ActorAPIView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class ActorDetailAPIView(GenericAPIView):
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
+
+    def get(self, request, pk):
+        actor = get_object_or_404(self.get_queryset(), pk=pk)
+        serializer = self.get_serializer(actor)
+        return Response(serializer.data)
 
     def put(self, request, pk):
         actor = get_object_or_404(self.get_queryset(), pk=pk)
