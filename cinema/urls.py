@@ -1,8 +1,14 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from cinema.views import MovieViewSet, GenreListCreateAPIView, ActorListCreateAPIView, CinemaHallViewSet, GenreDetailAPIView, \
-    ActorDetailAPIView
+from cinema.views import (
+    MovieViewSet,
+    GenreListCreateAPIView,
+    ActorListCreateAPIView,
+    CinemaHallViewSet,
+    GenreDetailAPIView,
+    ActorDetailAPIView,
+)
 
 app_name = "cinema"
 
