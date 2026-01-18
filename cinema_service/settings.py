@@ -27,19 +27,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-<<<<<<< HEAD
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-a4&2l*-5-$lhvpadt%4fv$4cz88d&%8yt$l=)f0*zd1)+@v*tm"
-=======
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = (
     "django-insecure-6vubhk2$++agnctay_4pxy_8cq)mosmn(*-#2b^v4cgsh-^!i3"
 )
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -61,11 +58,8 @@ INSTALLED_APPS = [
     "user",
 ]
 
-<<<<<<< HEAD
 AUTH_USER_MODEL = "user.User"
 
-=======
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -98,11 +92,8 @@ WSGI_APPLICATION = "cinema_service.wsgi.application"
 
 
 # Database
-<<<<<<< HEAD
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-=======
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 DATABASES = {
     "default": {
@@ -113,7 +104,6 @@ DATABASES = {
 
 
 # Password validation
-<<<<<<< HEAD
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -134,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-=======
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -160,7 +149,6 @@ AUTH_USER_MODEL = "user.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 LANGUAGE_CODE = "en-us"
 
@@ -172,19 +160,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-<<<<<<< HEAD
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-=======
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 STATIC_URL = "static/"
 
 # Default primary key field type
-<<<<<<< HEAD
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-=======
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

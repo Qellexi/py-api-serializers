@@ -231,10 +231,6 @@
         9
       ]
     }
-<<<<<<< HEAD
-  }
-]
-=======
   },
   {
     "model": "cinema.moviesession",
@@ -555,4 +551,3 @@
     }
   }
 ]
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9

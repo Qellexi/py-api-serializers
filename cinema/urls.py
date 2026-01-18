@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.urls import path, include
 from rest_framework import routers
 
@@ -17,6 +16,3 @@ router.register("movie_sessions", MovieSessionViewSet, basename="movie_sessions"
 
 urlpatterns = [path("", include(router.urls)),
 ]
-=======
-# write urls here
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9

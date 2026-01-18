@@ -8,7 +8,6 @@ For more information on this file, see
 https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 =======
 https://docs.djangoproject.com/en/4.0/howto/deployment/asgi/
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 """
 
 import os

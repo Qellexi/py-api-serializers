@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import get_object_or_404
 from rest_framework import status, viewsets
 from rest_framework.generics import GenericAPIView
@@ -65,6 +64,3 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-=======
-# write views here
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
