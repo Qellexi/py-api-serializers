@@ -1,5 +1,6 @@
 # Check Your Code Against the Following Points
 
+<<<<<<< HEAD
 ## Don't forget to add `.gitignore` file BEFORE pushing
 
 Make sure you don't push DB files (files with `.sqlite`, `.db3`, etc. extension).
@@ -31,18 +32,31 @@ if request.method == 'POST':
 ```
 
 2. Make sure that your `Response` returns status code:
+=======
+## Code Style
+
+1. Do not forget about type annotation in class methods.
+
+2. You do not need `.all()` method before 
+`.prefetch_related()` and `.select_related()` methods:
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 Good example:
 
 ```python
+<<<<<<< HEAD
 if request.method == "GET":
     serializer = MovieSerializer(movie)
     return Response(serializer.data, status=status.HTTP_200_OK)
+=======
+queryset = Movie.objects.prefetch_related("actors")
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 ```
 
 Bad example:
 
 ```python
+<<<<<<< HEAD
 if request.method == "GET":
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
@@ -50,17 +64,28 @@ if request.method == "GET":
 
 3. If you specify `max_length` then it's more reasonable 
 to use `CharField` instead of `TextField`:
+=======
+queryset = Movie.objects.all().prefetch_related("actors")
+```
+
+3. You can provide multiple arguments into prefetch_related method:
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 Good example:
 
 ```python
+<<<<<<< HEAD
 class Book(models.Model):
     description = models.CharField(max_length=255)
+=======
+queryset = Movie.objects.prefetch_related("actors", "genres")
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 ```
 
 Bad example:
 
 ```python
+<<<<<<< HEAD
 class Book(models.Model):
     description = models.TextField(max_length=255)
 ```
@@ -90,6 +115,11 @@ Use `get_object_or_404` instead of `try`/`except` for this purpose.
 7. A serializer field is required by default. ([DRF required documentation](https://www.django-rest-framework.org/api-guide/fields/#required))
 8. Your project should be one-styled, don't use double and single quotes at the same time. Double quotes are preferred.
 
+=======
+queryset = Movie.objects.prefetch_related("actors").prefetch_related("genres")
+```
+
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 ## Clean Code
 Add comments, prints, and functions to check your solution when you write your code. 
 Don't forget to delete them when you are ready to commit and push your code.

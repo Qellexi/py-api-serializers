@@ -1,11 +1,17 @@
 from django.test import TestCase
 
 from rest_framework.test import APIClient
+<<<<<<< HEAD
 from rest_framework import status, viewsets
 
 from cinema.serializers import CinemaHallSerializer
 from cinema.models import CinemaHall
 from cinema.views import CinemaHallViewSet
+=======
+from rest_framework import status
+
+from cinema.models import CinemaHall
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 
 class CinemaHallApiTests(TestCase):
@@ -22,6 +28,7 @@ class CinemaHallApiTests(TestCase):
             seats_in_row=8,
         )
 
+<<<<<<< HEAD
     def test_cinema_hall_is_subclass_generic_viewset(self):
         self.assertTrue(issubclass(CinemaHallViewSet, viewsets.GenericViewSet))
 
@@ -33,6 +40,34 @@ class CinemaHallApiTests(TestCase):
         serializer = CinemaHallSerializer(CinemaHall.objects.all(), many=True)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
+=======
+    def test_get_cinema_halls(self):
+        response = self.client.get("/api/cinema/cinema_halls/")
+        blue_hall = {
+            "name": "Blue",
+            "rows": 15,
+            "seats_in_row": 20,
+            "capacity": 300,
+        }
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data[0]["name"], blue_hall["name"])
+        self.assertEqual(response.data[0]["rows"], blue_hall["rows"])
+        self.assertEqual(
+            response.data[0]["seats_in_row"], blue_hall["seats_in_row"]
+        )
+        vip_hall = {
+            "name": "VIP",
+            "rows": 6,
+            "seats_in_row": 8,
+            "capacity": 48,
+        }
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data[1]["name"], vip_hall["name"])
+        self.assertEqual(response.data[1]["rows"], vip_hall["rows"])
+        self.assertEqual(
+            response.data[1]["seats_in_row"], vip_hall["seats_in_row"]
+        )
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
     def test_post_cinema_halls(self):
         response = self.client.post(
@@ -50,6 +85,7 @@ class CinemaHallApiTests(TestCase):
 
     def test_get_cinema_hall(self):
         response = self.client.get("/api/cinema/cinema_halls/2/")
+<<<<<<< HEAD
         serializer = CinemaHallSerializer(
             CinemaHall(
                 id=2,
@@ -60,6 +96,21 @@ class CinemaHallApiTests(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
+=======
+        vip_hall = {
+            "name": "VIP",
+            "rows": 6,
+            "seats_in_row": 8,
+            "capacity": 48,
+        }
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["name"], vip_hall["name"])
+        self.assertEqual(response.data["rows"], vip_hall["rows"])
+        self.assertEqual(
+            response.data["seats_in_row"], vip_hall["seats_in_row"]
+        )
+        self.assertEqual(response.data["capacity"], vip_hall["capacity"])
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
     def test_get_invalid_cinema_hall(self):
         response = self.client.get("/api/cinema/cinema_halls/1001/")

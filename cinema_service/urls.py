@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 URL configuration for cinema_service project.
 
@@ -21,4 +22,11 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/cinema/", include("cinema.urls")),
+=======
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 ]

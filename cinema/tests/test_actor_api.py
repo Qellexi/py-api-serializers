@@ -1,11 +1,18 @@
 from django.test import TestCase
 
+<<<<<<< HEAD
 from rest_framework import status, generics, mixins, viewsets
 from rest_framework.test import APIClient
 
 from cinema.serializers import ActorSerializer
 from cinema.models import Actor
 from cinema.views import ActorList, ActorDetail
+=======
+from rest_framework import status
+from rest_framework.test import APIClient
+
+from cinema.models import Actor
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 
 class ActorApiTests(TestCase):
@@ -14,6 +21,7 @@ class ActorApiTests(TestCase):
         Actor.objects.create(first_name="George", last_name="Clooney")
         Actor.objects.create(first_name="Keanu", last_name="Reeves")
 
+<<<<<<< HEAD
     def test_actor_list_is_subclass(self):
         self.assertTrue(issubclass(ActorList, mixins.ListModelMixin))
         self.assertTrue(issubclass(ActorList, mixins.CreateModelMixin))
@@ -42,6 +50,15 @@ class ActorApiTests(TestCase):
         serializer = ActorSerializer(Actor.objects.all(), many=True)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
+=======
+    def test_get_actors(self):
+        response = self.client.get("/api/cinema/actors/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        actors_full_names = [actor["full_name"] for actor in response.data]
+        self.assertEqual(
+            sorted(actors_full_names), ["George Clooney", "Keanu Reeves"]
+        )
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
     def test_post_actors(self):
         response = self.client.post(
@@ -56,6 +73,7 @@ class ActorApiTests(TestCase):
         self.assertEqual(db_actors.count(), 3)
         self.assertEqual(db_actors.filter(first_name="Scarlett").count(), 1)
 
+<<<<<<< HEAD
     def test_get_actor(self):
         response = self.client.get("/api/cinema/actors/2/")
         serializer = ActorSerializer(
@@ -64,6 +82,8 @@ class ActorApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
 
+=======
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
     def test_get_invalid_actor(self):
         response = self.client.get("/api/cinema/actors/1001/")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -89,6 +109,7 @@ class ActorApiTests(TestCase):
             ],
         )
 
+<<<<<<< HEAD
     def test_patch_actor(self):
         response = self.client.patch(
             "/api/cinema/actors/1/",
@@ -98,6 +119,8 @@ class ActorApiTests(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+=======
+>>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
     def test_delete_actor(self):
         response = self.client.delete(
             "/api/cinema/actors/1/",
