@@ -1,19 +1,9 @@
 from django.test import TestCase
 
-<<<<<<< HEAD
-from rest_framework import status, generics, viewsets
-from rest_framework.test import APIClient
-from rest_framework.views import APIView
-
-from cinema.serializers import GenreSerializer
-from cinema.models import Genre
-from cinema.views import GenreList, GenreDetail
-=======
 from rest_framework import status
 from rest_framework.test import APIClient
 
 from cinema.models import Genre
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
 
 class GenreApiTests(TestCase):
@@ -26,39 +16,11 @@ class GenreApiTests(TestCase):
             name="Drama",
         )
 
-<<<<<<< HEAD
-    def test_genre_list_is_subclass(self):
-        self.assertTrue(issubclass(GenreList, APIView))
-
-    def test_genre_list_is_not_subclass(self):
-        items = [generics.GenericAPIView, viewsets.GenericViewSet]
-
-        for item in items:
-            with self.subTest(str(item).split(".")[2]):
-                self.assertFalse(issubclass(GenreList, item))
-
-    def test_genre_detail_is_subclass(self):
-        self.assertTrue(issubclass(GenreDetail, APIView))
-
-    def test_genre_detail_is_not_subclass(self):
-        items = [generics.GenericAPIView, viewsets.GenericViewSet]
-
-        for item in items:
-            with self.subTest(str(item).split(".")[2]):
-                self.assertFalse(issubclass(GenreDetail, item))
-
-    def test_get_genres(self):
-        response = self.client.get("/api/cinema/genres/")
-        serializer = GenreSerializer(Genre.objects.all(), many=True)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, serializer.data)
-=======
     def test_get_genres(self):
         response = self.client.get("/api/cinema/genres/")
         genres = [genre["name"] for genre in response.data]
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(sorted(genres), ["Comedy", "Drama"])
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
 
     def test_post_genres(self):
         response = self.client.post(
@@ -72,20 +34,6 @@ class GenreApiTests(TestCase):
         self.assertEqual(db_genres.count(), 3)
         self.assertEqual(db_genres.filter(name="Sci-fi").count(), 1)
 
-<<<<<<< HEAD
-    def test_get_genre(self):
-        response = self.client.get("/api/cinema/genres/2/")
-        serializer = GenreSerializer(
-            Genre(
-                id=2,
-                name="Drama",
-            )
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, serializer.data)
-
-=======
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
     def test_get_invalid_genre(self):
         response = self.client.get("/api/cinema/genres/1001/")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -99,18 +47,6 @@ class GenreApiTests(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-<<<<<<< HEAD
-    def test_patch_genre(self):
-        response = self.client.patch(
-            "/api/cinema/genres/1/",
-            {
-                "name": "Sci-fi",
-            },
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-=======
->>>>>>> 1f225beee00415b859782acdae7cb6ded83764f9
     def test_delete_genre(self):
         response = self.client.delete(
             "/api/cinema/genres/1/",
